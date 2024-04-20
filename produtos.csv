@@ -1,0 +1,11 @@
+id_produto,nome_produto,preco,id_categoria
+1,X-Salada,10,2
+2,X-Bacon,12.5,2
+3,X-Tudo,15,2
+4,Refrigerante 600 ml,5,1
+5,Suco 300 ml,3,1
+6,Suco 500 ml,6,1
+7,Pudim,6,3
+8,Combo Lanche+Suco,-2,4
+9,Sorvete,2,3
+10,Maçã,1,5

@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Todas As Vendas
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Id Venda</th>
+                <th>Data Venda</th>
+                <th>Entregue</th>
+                <th>Valor</th>
+                <th>Venda Detalhada</th>
+            </tr>
+        </thead>
+        <tbody>
+
+                {% for item in lista_vendas %}
+                    <tr>
+                        <td>{{item['cliente']}}</td>
+                        <td>{{item['id_venda']}}</td>
+                        <td>{{item['data_venda']}}</td>
+
+                        {% if item['entregue'] == 0 %}
+                            <td>Não</td>
+                        {% else %}
+                            <td>Sim</td>
+                        {% endif %}
+
+                        <td>R${{"{:.2f}".format(item['total'])}}</td>
+                        <td>
+                            <form action="todasvendas" method="POST">
+                                <input type="hidden" name="id" value="{{item['id_venda']}}" />
+                                <button class="btn btn-primary" type="submit">Click</button>
+                            </form>
+                        </td>
+                    </tr>
+                    
+                {% endfor %}
+            
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Gerenciar Categorias
+{% endblock %}
+
+{% block main %}
+<br>
+    <form action="/confirmarvenda" method="post">
+
+        <h2>Confirmar Venda</h2>
+        <h3>Cliente: {{cliente}}</h3>
+        <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome Produto</th>
+                <th>QTD</th>
+                <th>Total Produto</th>
+            </tr>
+        </thead>
+        <tbody>
+
+                {% for item in cf_venda %}
+                    <tr>
+                        <td>{{item['nome_produto']}}</td>
+                        <td>{{item['qtd']}}</td>
+
+                        <td>R${{"{:.2f}".format(item['total_produtos'])}}</td>
+                    </tr>
+
+                {% endfor %}
+                    <tr>
+                        <td><b>Total Compra</b></td>
+                        <td></td>
+                        <td><b>R${{"{:.2f}".format(total_compra)}}</b></td>
+                    </tr>
+        </tbody>
+        </table>
+        <button class="btn btn-primary" type="button" onclick="window.location.href='/venda'">Cancelar</button>
+        <button class="btn btn-primary" type="submit">Confirmar Venda</button>
+        </form>
+
+{% endblock %}
+

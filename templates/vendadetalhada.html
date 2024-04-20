@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Venda Detalhada
+{% endblock %}
+
+{% block main %}
+    <h2>Id da Venda: {{id}}</h2>
+    <h2>Data Venda: {{data_entrega}}</h2>
+    <h2>Entregue: {{entregue}}</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome do Produto</th>
+                <th>Quantidade</th>
+                <th>Valor Total do Produto</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in dados %}
+                <tr>
+                    <td>{{item['nome_produto']}}</td>
+                    <td>{{item['qtd']}}</td>
+                    <td>R${{"{:.2f}".format(item['total_produtos'])}}</td>
+                </tr>
+            {% endfor %}
+                <tr>
+                    <td><b>Total Geral</b></td>
+                    <td></td>
+                    <td><b>R${{"{:.2f}".format(total)}}</b></td>
+                </tr>
+        </tbody>
+
+    </table>
+
+{% endblock %}

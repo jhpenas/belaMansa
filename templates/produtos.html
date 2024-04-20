@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Produtos
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>ID Produto</th>
+                <th>Preço</th>
+                <th>Categoria</th>
+                {% if admin %}
+                <th>Excluir</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+
+                {% for item in lista_produtos %}
+                    <tr>
+                        <td>{{item['nome_produto']}}</td>
+                        <td>{{item['id_produto']}}</td>
+                        <td>R${{"{:.2f}".format(item['preco'])}}</td>
+                        <td>{{item['nome_categoria']}}</td>
+                        {% if admin %}
+                        <td>
+                            <form action="/produtosadmin" method="post">
+                                <input type="hidden" name="id_produto" value="{{item['id_produto']}}" />
+                                <button class="btn btn-danger" type="submit">Remover</button>
+                            </form>
+                        </td>
+                        {% endif %}
+                    </tr>
+                    
+                {% endfor %}
+            
+        </tbody>
+    </table>
+{% endblock %}

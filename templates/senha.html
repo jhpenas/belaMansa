@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    SEnha
+{% endblock %}
+
+{% block main %}
+<h2>Senha: {{senha}}</h2>
+    <form action="/senha" method="post">
+        <button class="btn btn-primary" type="submit">Resetar Senha</button>
+    </form>
+{% endblock %}

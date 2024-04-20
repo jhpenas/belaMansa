@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <h2>{{nome_categoria}}</h2>
+    {% if vazia %}
+    <h2>Não foram cadastradas vendas de produtos dessa categoria</h2>
+    {% endif %}
+        <canvas id="chart" width="600" height="400"></canvas>
+        <script>
+          var pieData = [
+            {% for item, label, colors in set %}
+              {
+                value: {{item}},
+                label: "{{label}}",
+                color : "{{colors}}"
+              },
+            {% endfor %}
+          ];
+
+          // get bar chart canvas
+          var mychart = document.getElementById("chart").getContext("2d");
+          steps = 10
+          max = {{ max }}
+
+          // draw pie chart
+          new Chart(document.getElementById("chart").getContext("2d")).Pie(pieData);
+
+        </script>
+
+
+
+{% endblock %}

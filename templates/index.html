@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Entregas Pendentes
+{% endblock %}
+
+{% block main %}
+    <h1>Entregas Pendentes</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Senha</th>
+                <th>Produtos</th>
+                <th>Entregar</th>
+            </tr>
+        </thead>
+        <tbody>
+
+                {% for item in vendas %}
+                    <tr>
+                        <td><h3>{{item['cliente']}}</h3></td>
+                        <td><h3>{{item['senha']}}</h3></td>
+                        <td>
+                            <table class="table table-sm table-bordered">
+                                <thead ></thead>
+                                <tbody class="table-secondary">
+                                    {% for produto in item['produtos'] %}
+                                    <tr >
+                                        <td><h2>{{produto['nome_produto']}}</h2></td>
+                                        <td><h2>{{produto['qtd']}}</h2></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </td>
+                        <td>
+                            <form action="entrega" method="POST">
+                                <input type="hidden" name="id" value="{{item['id_venda']}}" />
+                                <button class="btn btn-primary" type="submit">Entregar</button>
+                            </form>
+                        </td>
+                    </tr>
+
+                {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}

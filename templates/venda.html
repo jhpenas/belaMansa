@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Gerenciar Categorias
+{% endblock %}
+
+{% block main %}
+<br>
+    <form action="/venda" method="post">
+        <h2>Cliente</h2>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="cliente" placeholder="Nome do Cliente" type="text">
+        </div>
+
+        <table class="table table-striped">
+
+            {% for item in prod_categorias %}
+            <thead>
+                <tr>
+                <th><h1>{{item['categoria']}}</h1></th>
+                <th></th>
+                <th></th>
+                </tr>
+                <tr>
+                    <th>Produto</th>
+                    <th>Preço</th>
+                    <th>QTD</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+
+                {% for produto in item['lista_produtos'] %}
+                    <tr>
+                        <td>{{produto['nome_produto']}}</td>
+                        <td>R${{"{:.2f}".format(produto['preco'])}}</td>
+                        <td><input autocomplete="off" autofocus class="form-control" name="{{produto['nome_produto']}}" placeholder="QTD" type="number" max="99"  min="0" size="2"></td>
+                    </tr>
+
+                {% endfor %}
+            <tr>
+                <td></td>
+            </tr>
+
+            </tbody>
+            {% endfor %}
+        </table>
+<br>
+
+        <button class="btn btn-primary" type="submit">Registrar</button>
+        </form>
+
+{% endblock %}
+

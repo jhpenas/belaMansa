@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+<div>
+    <h2>Gráfico De Pizza</h2>
+    <h5>Escolher Categoria</h5>
+        <form action="/graficos" method="post">
+            <div class="form-group">
+            <input list="categoria" name="categoria">
+            <datalist id="categoria">
+                {% for categoria in lista_categorias %}
+                    <option value="{{categoria['nome_categoria']}}">
+                {% endfor %}
+            </datalist>
+
+        <button class="btn btn-primary" type="submit">Escolher</button>
+            </div>
+        </form>
+</div>
+<br>
+<br>
+<br>
+<div>
+    <h2>Gráfico De Linha</h2>
+    <button class="btn btn-primary" type="submit">Escolher</button>
+</div>
+<br>
+<br>
+<br>
+<div>
+    <h2>Gerar Planilha</h2>
+    <button class="btn btn-primary" type="button" onclick="window.location.href='/gerarcsv'">CSV</button>
+</div>
+{% endblock %}

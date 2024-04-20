@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Editar Categoria
+{% endblock %}
+
+{% block main %}
+
+<h2>Editar Categoria</h2>
+<br>
+<h3>{{nome_categoria}}</h3>
+<br>
+<form action="/editarcategoria" method="post">
+  <label for="ordem">Ordem:</label>
+  <input type="number" id="ordem" name="ordem" min="1" value="{{ordem}}">
+    <br>
+  <label for="novo_nome">Nome: </label>
+  <input type="text" id="novo_nome" name="novo_nome" value="{{nome_categoria}}">
+  <input type="hidden" name="velho_nome" value="{{nome_categoria}}" />
+    <br>
+    <br>
+  <button class="btn btn-primary" type="submit">Atualizar</button>
+</form>
+{% endblock %}
